@@ -170,17 +170,19 @@ Future<void> main() async {
 
 ![Checkpoint 2.1 Users](Image/cp2-1_users.png)
 
+_(ภาพ Error สองภาพด้านล่างทดสอบผ่านหน้า Add user ของ Firebase Console ซึ่งให้ผลตรวจสอบแบบเดียวกับที่แอปได้รับ)_
+
 **กรณี (ก) สมัครซ้ำด้วย Email เดิม**
 
 ![Checkpoint 2.1 email already exists](Image/cp2-1_error_email_in_use.png)
 
-Firebase ตอบ code `email-already-in-use` เมธอด `signUp()` ดักด้วย `on FirebaseAuthException` แล้ว `_translateErrorCode()` แปลเป็น "อีเมลนี้ถูกใช้สมัครสมาชิกไปแล้ว"
+เมื่อสมัครจากแอป Firebase ตอบ code `email-already-in-use` เมธอด `signUp()` ดักด้วย `on FirebaseAuthException` แล้ว `_translateErrorCode()` แปลเป็น "อีเมลนี้ถูกใช้สมัครสมาชิกไปแล้ว"
 
 **กรณี (ข) รหัสผ่านสั้นเกินไป**
 
 ![Checkpoint 2.1 weak password](Image/cp2-1_error_weak_password.png)
 
-Firebase ตอบ code `weak-password` ผ่านเส้นทางเดียวกัน `_translateErrorCode()` แปลเป็น "รหัสผ่านสั้นเกินไป กรุณาตั้งรหัสผ่านอย่างน้อย 6 ตัวอักษร"
+เมื่อสมัครจากแอป Firebase ตอบ code `weak-password` ผ่านเส้นทางเดียวกัน `_translateErrorCode()` แปลเป็น "รหัสผ่านสั้นเกินไป กรุณาตั้งรหัสผ่านอย่างน้อย 6 ตัวอักษร"
 
 ---
 
@@ -733,7 +735,9 @@ service cloud.firestore {
 
 **กรณี (ข) แก้ไขเอกสารของคนอื่น — ถูกปฏิเสธ (denied)**
 
-_(ยังไม่มีภาพ)_
+![Checkpoint 7.1 Rules ที่ใช้ทดสอบ](Image/cp7-1_a_allowed.png)
+
+_(ภาพแทนชั่วคราว: เป็นภาพ Rules ชุดเดียวกับกรณี (ก) ยังไม่ใช่ผลลัพธ์ denied)_ เมื่อเปลี่ยน Firebase UID เป็นค่าที่ไม่ตรงกับ `sellerId` ของเอกสาร เงื่อนไข `request.auth.uid == resource.data.sellerId` ในบรรทัดที่ 7 จะเป็นเท็จ คำขอ update จึงถูกปฏิเสธ
 
 **คำอธิบาย:** การซ่อนปุ่มแก้ไขเป็นแค่การปิดทางใน UI ผู้อื่นยังเขียนโค้ดเรียก Firestore ตรง ๆ ได้โดยไม่ผ่านแอป Security Rules ทำงานบนเซิร์ฟเวอร์และตรวจทุกคำขอ จึงเป็นด่านที่บังคับได้จริงว่าแก้ไขได้เฉพาะเจ้าของ
 
