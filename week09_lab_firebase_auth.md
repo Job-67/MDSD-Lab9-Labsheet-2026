@@ -834,3 +834,5 @@ emulator -avd Pixel7_API34_PlayStore
 **แอป Crash ตอนเปิดหน้า "ร่างของฉัน" หรือหน้าดูประกาศของตัวเอง ด้วย Error เกี่ยวกับ Index** Firestore ต้องการ Composite Index เมื่อ Query ที่ซับซ้อน (เช่น `where` ร่วมกับ `orderBy` มากกว่า 1 field) ข้อความ Error จาก Firestore มักแนบลิงก์ให้กดสร้าง Index อัตโนมัติมาด้วยเสมอ ให้กดลิงก์นั้นแล้วรอสักครู่ให้ Index สร้างเสร็จ
 
 ---
+
+link branch : (go to branch)[https://github.com/Job-67/MDSD-Lab9-Labsheet-2026/tree/campus_marketplace_w7]
